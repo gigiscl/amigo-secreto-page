@@ -14,8 +14,6 @@ function mostrarAmigos() {
 
 function agregarALista(amigo){
     listaAmigos.push(amigo);
-    alert(listaAmigos);
-
 }
 
 function validarAmigo(amigo) {
@@ -37,4 +35,31 @@ function agregarAmigo() {
     validarAmigo(amigoUsuario);
     limpiarCampo("amigo");
     mostrarAmigos();
+}
+
+function mostrarResultado(pos) {
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = "";
+
+    lista.innerHTML += "<li>" + "Tu amigo secreto es: "+ listaAmigos[pos] + "</li>";
+}
+
+function noTenesAmigos() {
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = "";
+
+    lista.innerHTML += "<li>No hay amigos para sortear</li>";    
+    
+}
+function sortearAmigo() {
+    //Validar que hay amigos
+
+    //Generar indice aleatorio
+    if(listaAmigos.length != 0){
+        let indice = Math.floor(Math.random()*listaAmigos.length)
+
+        mostrarResultado(indice);
+    }else{
+        noTenesAmigos();
+    }
 }
